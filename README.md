@@ -1,69 +1,41 @@
-# React + TypeScript + Vite
+# 🧠 JackBot Quiz  
+## *An interactive game to compare human and AI-generated comedy*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Can an AI be funny? I sure think so.
 
-Currently, two official plugins are available:
+This interactive quiz challenges players to guess whether a **Quiplash** answer was written by a human or by [**JackBot**](https://github.com/null-port/jackbot), an AI fine-tuned to generate comedic responses.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Note: All answers have been pre-generated and are not inferenced live. If you're interested, you can find the model [here](https://huggingface.co/nullport/Jackbot).
 
-## Expanding the ESLint configuration
+🧪 **Exhibited live at Open Sauce 2025**  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Quick Start
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Install dependencies**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Run the development server**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+3. Open your browser to [http://localhost:5173](http://localhost:5173) and start playing!
+
+---
+
+## 🧱️ Tech Stack
+
+This project was built with:
+
+- ⚡️ [Vite](https://vitejs.dev/)
+- ⚛️ [React](https://react.dev/)
+- 🎨 [Tailwind CSS](https://tailwindcss.com/)
+- 🤖 [JackBot](https://huggingface.co/nullport/Jackbot) — A fine-tuned LLM trained on 500+ Quiplash responses
+- 🧠 [JackBot Training Dataset](https://huggingface.co/datasets/nullport/QuiplashAnswers)  — Real answers taken from the JackBot Quiplash dataset
+
