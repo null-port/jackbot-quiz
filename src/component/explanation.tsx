@@ -4,7 +4,6 @@ import jackbot from "../assets/jackbot_file.png"
 
 export default function IntroScreen({setCompleteIntroPage} : {setCompleteIntroPage: React.Dispatch<React.SetStateAction<boolean>>}){
 
-
     const [introButton, setIntroButton] = useState(false);
 
     function handleIntroButtonClick(){

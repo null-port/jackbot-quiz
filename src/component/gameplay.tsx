@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { easeIn, easeOut, motion } from 'motion/react'
+import { easeOut, motion } from 'motion/react'
 import quiplash_bg1 from '../assets/quiplash_bg1.webp'
 import quiplash_bg2 from '../assets/quiplash_bg2.webp'
 import quiplash_bg3 from '../assets/quiplash_bg3.webp'
@@ -17,16 +17,18 @@ export default function GamePlayScreen({questionsArray, setCompleteIntroPage}:{q
     let humanAnswer;
     let robotAnswer;
 
-    const background_array = [quiplash_bg1, quiplash_bg2, quiplash_bg3, quiplash_bg4, quiplash_bg5, ];
+    const background_array = [quiplash_bg1, quiplash_bg2, quiplash_bg3, quiplash_bg4, quiplash_bg5];
     
     const currentIndex = wrongCount + correctCount;
 
+    // Loads new question on re-render
     if (currentIndex < 10) {
         question = questionsArray[currentIndex][0];
         humanAnswer = questionsArray[currentIndex][1];
         robotAnswer = questionsArray[currentIndex][2];
     }
 
+    // Updates correct answer count and incorrect answer count
     async function handleAnswer(correct: boolean){
         setShowAuthor(true);
         await new Promise(resolve => setTimeout(resolve, 3000));
@@ -40,20 +42,14 @@ export default function GamePlayScreen({questionsArray, setCompleteIntroPage}:{q
         setShowAuthor(false);
     }
 
+    // Resets component for a new game
     function reset_to_title(){
         setCorrectCount(0);
         setWrongCount(0);
         setCompleteIntroPage(false);
     }
 
-    // useEffect(() => {
-    // if (currentIndex >= 10) {
-    //     const timer = setTimeout(() => {
-    //         reset_to_title();
-    //     }, 10000);
-    //     return () => clearTimeout(timer);
-    // }}, [currentIndex]);
-
+    // Handles ending text based on score
     function pick_ending(){
         if (wrongCount > 3) {
             return (
@@ -89,7 +85,7 @@ export default function GamePlayScreen({questionsArray, setCompleteIntroPage}:{q
     return (
     <div>
         {
-        currentIndex < 10 ?
+        currentIndex < 10 ? // If there are fewer than 10 questions answered, display game
         <div className={(showAuthor) ? 'absolute inset-0 z-50 pointer-events-none select-none' : ''}>
             <div className="fixed inset-7 font-rockwell text-3xl text-white -z-1">
                 <p className="text-shadow-md/20 text-shadow-black select-none">Question {currentIndex + 1} / 10</p>
@@ -100,7 +96,7 @@ export default function GamePlayScreen({questionsArray, setCompleteIntroPage}:{q
                 </div>
             </div>
             <div>
-            { order ?
+            { order ? // Randomize order of questions on left or right
                 <div className="flex flex-row space-x-10 items-center justify-center">
                     <div className="flex flex-col space-x-4 justify-center">
                         <button className="w-150 h-75 font-lango tracking-wide uppercase text-7xl bg-white hover:bg-gray-300 shadow-md shadow-black text-black rounded-md p-4 hover:cursor-pointer" onClick={() => handleAnswer(true)}>
@@ -133,7 +129,7 @@ export default function GamePlayScreen({questionsArray, setCompleteIntroPage}:{q
                     </div>
                 </div>
             }
-            { showAuthor ?
+            { showAuthor ? // Display author once question answered
                 <div>
                     { order ?
                         <motion.div className="font-rockwell text-8xl pt-8 select-none"
@@ -154,7 +150,8 @@ export default function GamePlayScreen({questionsArray, setCompleteIntroPage}:{q
                     }
                 </div> : ''
             }               
-            </div> 
+            </div>
+            {/* Preload backgrounds */}
             <img className="fixed inset-0 -z-10 select-none" src={background_array[currentIndex % 5]}></img>
             <img className="fixed inset-0 -z-10 select-none" src={background_array[(currentIndex + 1) % 5]}></img>
             <img className="fixed inset-0 -z-10 select-none" src={background_array[(currentIndex + 2) % 5]}></img>
