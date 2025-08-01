@@ -1,4 +1,4 @@
-# 🧠 JackBot Quiz  
+# 📃 JackBot Quiz  
 ## *An interactive game to compare human and AI-generated comedy*
 
 Can an AI be funny? I sure think so.
