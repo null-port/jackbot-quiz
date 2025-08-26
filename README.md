@@ -29,7 +29,7 @@ npm run dev
 
 ---
 
-## 🧱️ Tech Stack
+## Tech Stack
 
 This project was built with:
 
